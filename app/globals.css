@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --accent: #3DF5A0; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+/* html carries the base dark colour so scrolled-past-content areas stay #050505 */
+html { background: #050505; scroll-behavior: smooth; }
+/* body must be transparent so the fixed WebGL canvas at z-index:0 shows through */
+body {
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: #EDEDED;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+::selection { background: #3DF5A0; color: #050505; }
+a { color: inherit; text-decoration: none; }
+
+@keyframes blink { 0%, 48% { opacity: 1; } 49%, 100% { opacity: 0; } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+@keyframes scrolldot {
+  0%   { transform: translateY(0);    opacity: 0; }
+  25%  { opacity: 1; }
+  100% { transform: translateY(30px); opacity: 0; }
+}
+@keyframes sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.nav-link { transition: color .18s ease; }
+.nav-link:hover { color: #EDEDED !important; }
+
+.repo-btn { transition: color .18s ease, border-color .18s ease, background .18s ease; }
+.repo-btn:hover { color: var(--accent) !important; border-color: var(--accent) !important; background: #0A0A0A !important; }
+
+.project-card { transition: background .18s ease; }
+.project-card:hover { background: #080808 !important; }
+
+.lab-row { transition: background .16s ease; }
+.lab-row:hover { background: #0A0A0A !important; }
+
+.contact-email { transition: color .18s ease; }
+.contact-email:hover { color: var(--accent) !important; }
+
+.social-link { transition: color .18s ease; }
+.social-link:hover { color: #EDEDED !important; }
+
+/* Fixed WebGL canvas — sits above the html base colour but below all page content */
+.webgl-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/*
+ * Foreground content panels — sit above the canvas (z-index:0).
+ * Semi-transparent so bright particles bleed through without hurting readability.
+ * backdrop-filter is intentionally omitted: compositing a blur over WebGL every
+ * frame is expensive. The rgba darkness alone provides sufficient contrast.
+ */
+.section-panel {
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 680px) {
+  .lab-row { grid-template-columns: 30px 1fr auto !important; row-gap: 12px !important; }
+  .lab-desc { grid-column: 2 / -1 !important; grid-row: 2 !important; }
+}
