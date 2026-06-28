@@ -173,44 +173,45 @@ export default function HeroScene() {
       toDispose.push(() => { hGeo.dispose(); hMat.dispose(); });
 
       // ── Responsive helix placement ──────────────────────────────────────
-      // scale.y is reserved for GSAP; this only touches position.x and scale.x/z
-      function placeHelix() {
-        const asp    = camera.aspect;
-        const halfW  = Math.tan((FOV / 2) * (Math.PI / 180)) * 8 * asp;
+      function placeHelixScale() {
         const mobile = window.innerWidth < 768;
-
         if (mobile) {
-          // Narrow viewport: shrink x/z footprint and pull toward centre
           helixGroup.scale.x = 0.52;
           helixGroup.scale.z = 0.52;
-          helixGroup.position.x = halfW * 0.22;
         } else {
-          // Desktop: full size, anchored in the right-hand empty space
           helixGroup.scale.x = 1;
           helixGroup.scale.z = 1;
-          helixGroup.position.x = halfW * 0.50;
         }
       }
-      placeHelix();
 
-      // ── GSAP ScrollTrigger — Y-axis compression only ──────────────────
-      // Rotation is handled entirely in the rAF loop so it stays continuous.
-      const heroEl = document.getElementById('hero');
+      function getHelixStartX() {
+        const asp   = camera.aspect;
+        const halfW = Math.tan((FOV / 2) * (Math.PI / 180)) * 8 * asp;
+        return window.innerWidth < 768 ? halfW * 0.22 : halfW * 0.50;
+      }
 
-      const compTween = gsap.to(helixGroup.scale, {
-        y: 0.33,      // compress hard on scroll
-        ease: 'none',
+      placeHelixScale();
+      helixGroup.position.x = getHelixStartX();
+
+      // ── GSAP ScrollTrigger — X centering + scroll rotation ────────────
+      // scrollRot is a proxy so the rAF loop and GSAP never fight over rotation.y
+      const heroEl    = document.getElementById('hero');
+      const scrollRot = { ry: 0 };
+
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: heroEl,
           start: 'top top',
           end: 'bottom top',
-          scrub: 0.35, // fast follow → snappy physical feel
+          scrub: 1.0,
         },
       });
+      tl.to(helixGroup.position, { x: 0,            ease: 'none' }, 0)
+        .to(scrollRot,            { ry: Math.PI * 4, ease: 'none' }, 0);
 
       toDispose.push(() => {
-        compTween.scrollTrigger?.kill();
-        compTween.kill();
+        tl.scrollTrigger?.kill();
+        tl.kill();
       });
 
       // ── Window resize ──────────────────────────────────────────────────
@@ -220,7 +221,7 @@ export default function HeroScene() {
         camera.aspect = nW / nH;
         camera.updateProjectionMatrix();
         renderer.setSize(nW, nH);
-        placeHelix();
+        placeHelixScale();
       }
       window.addEventListener('resize', onResize);
       toDispose.push(() => window.removeEventListener('resize', onResize));
@@ -247,9 +248,9 @@ export default function HeroScene() {
         rotBoost += (scrollDelta * SCROLL_SCALE - rotBoost) * 0.25;
         rotBoost *= BOOST_DECAY;
 
-        // Add boost magnitude to the constant auto-spin
+        // Add boost magnitude to the constant auto-spin; GSAP scroll adds on top
         baseRotY += BASE_ROT + Math.abs(rotBoost);
-        helixGroup.rotation.y = baseRotY;
+        helixGroup.rotation.y = baseRotY + scrollRot.ry;
 
         // ── 2. Background parallax (0.2× scroll depth) ─────────────────
         bgGroup.rotation.y = tick * 0.016;

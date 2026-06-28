@@ -52,7 +52,7 @@ const lab = [
 export default function Work() {
   return (
     <section id="work" className="section-panel" style={{
-      background: 'rgba(5,5,5,0.82)',
+      background: 'rgba(5,5,5,0.1)',
       borderTop: '1px solid rgba(255,255,255,0.07)',
       padding: 'clamp(72px,12vh,150px) clamp(18px,4vw,56px)',
     }}>
@@ -61,7 +61,7 @@ export default function Work() {
       <div style={{
         display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
         flexWrap: 'wrap', gap: 12,
-        fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.2em', color: '#666',
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.2em', color: 'hsl(180, 100%, 70%)',
         paddingBottom: 'clamp(32px,5vh,56px)', borderBottom: '1px solid rgba(255,255,255,0.07)',
       }}>
         <span style={{ color: 'var(--accent)' }}>02 / FEATURED_DEPLOYMENT</span>
@@ -75,7 +75,7 @@ export default function Work() {
         paddingTop: 'clamp(40px,6vh,72px)', alignItems: 'start',
       }}>
         <div style={{ gridColumn: 'span 2', minWidth: 300 }}>
-          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.2em', color: '#666', marginBottom: 18 }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.2em', color: 'hsl(180, 100%, 70%)', marginBottom: 18 }}>
             PROJECT_NAME
           </div>
           <h2 style={{
@@ -87,7 +87,7 @@ export default function Work() {
           </h2>
           <p style={{
             fontFamily: "'Inter', sans-serif", fontWeight: 400,
-            fontSize: 'clamp(15px,1.6vw,19px)', lineHeight: 1.55, color: '#888',
+            fontSize: 'clamp(15px,1.6vw,19px)', lineHeight: 1.55, color: 'hsl(180, 100%, 70%)',
             maxWidth: 560, margin: 'clamp(26px,4vh,38px) 0 0',
           }}>
             Translating technical security safeguards into mechanistic, executable frames for
@@ -107,13 +107,13 @@ export default function Work() {
             }}
           >
             <span style={{ color: 'var(--accent)' }}>&gt;</span> view_repository
-            <span style={{ color: '#555' }}>_</span>
+            <span style={{ color: 'hsl(180, 100%, 70%)' }}>_</span>
           </a>
         </div>
 
         {/* metadata sidebar */}
         <div style={{ minWidth: 240, borderLeft: '1px solid rgba(255,255,255,0.08)', paddingLeft: 'clamp(20px,2vw,32px)' }}>
-          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.2em', color: '#666', marginBottom: 22 }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.2em', color: 'hsl(180, 100%, 70%)', marginBottom: 22 }}>
             // METADATA
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 0, fontFamily: "'JetBrains Mono', monospace", fontSize: 12 }}>
@@ -124,7 +124,7 @@ export default function Work() {
               { k: 'STATUS',    v: 'ACTIVE ●',             vStyle: { color: 'var(--accent)' } },
             ].map(({ k, v, vStyle }) => (
               <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '13px 0', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-                <span style={{ color: '#666', letterSpacing: '0.1em' }}>{k}</span>
+                <span style={{ color: 'hsl(180, 100%, 70%)', letterSpacing: '0.1em' }}>{k}</span>
                 <span style={{ color: '#EDEDED', ...vStyle }}>{v}</span>
               </div>
             ))}
@@ -140,10 +140,10 @@ export default function Work() {
         background: 'repeating-linear-gradient(135deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 11px), #060606',
         overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
-        <div style={{ position: 'absolute', top: 14, left: 16, fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.18em', color: '#555' }}>
+        <div style={{ position: 'absolute', top: 14, left: 16, fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.18em', color: 'hsl(180, 100%, 70%)' }}>
           // PROJECT_VISUAL — drop image / 3D frame
         </div>
-        <div style={{ position: 'absolute', bottom: 14, right: 16, fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.18em', color: '#444' }}>
+        <div style={{ position: 'absolute', bottom: 14, right: 16, fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.18em', color: 'hsl(180, 100%, 70%)' }}>
           1920 × 1080
         </div>
         <div style={{
@@ -151,7 +151,7 @@ export default function Work() {
           background: 'linear-gradient(90deg, transparent, rgba(61,245,160,0.06), transparent)',
           width: '40%', animation: 'sweep 4.5s linear infinite',
         }} />
-        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, letterSpacing: '0.24em', color: '#666' }}>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, letterSpacing: '0.24em', color: 'hsl(180, 100%, 70%)' }}>
           [ AWAITING_ASSET ]
         </span>
       </div>
@@ -160,11 +160,11 @@ export default function Work() {
       <div style={{
         display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
         flexWrap: 'wrap', gap: 12,
-        fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.2em', color: '#666',
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.2em', color: 'hsl(180, 100%, 70%)',
         marginTop: 'clamp(64px,10vh,110px)',
         paddingBottom: 'clamp(28px,4vh,40px)', borderBottom: '1px solid rgba(255,255,255,0.07)',
       }}>
-        <span style={{ color: '#888' }}>// THE_TECHNICAL_DOJO</span>
+        <span style={{ color: 'hsl(180, 100%, 70%)' }}>// THE_TECHNICAL_DOJO</span>
         <span>INDEX 002 — 004</span>
       </div>
 
@@ -179,24 +179,24 @@ export default function Work() {
             href={p.href} target="_blank" rel="noopener"
             className="project-card"
             style={{
-              background: '#050505', padding: 'clamp(26px,2.6vw,38px)',
+              background: 'rgba(5,5,5,0.1)', padding: 'clamp(26px,2.6vw,38px)',
               display: 'flex', flexDirection: 'column', minHeight: 300,
             }}
           >
             <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 10 }}>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'var(--accent)', letterSpacing: '0.06em' }}>{p.index}</span>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.12em', color: '#666' }}>{p.status}</span>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.12em', color: 'hsl(180, 100%, 70%)' }}>{p.status}</span>
             </div>
             <h3 style={{
               fontFamily: "'Inter', sans-serif", fontWeight: 600,
               fontSize: 'clamp(1.25rem,2vw,1.65rem)', letterSpacing: '-0.02em',
               color: '#EDEDED', margin: 'clamp(20px,3vh,30px) 0 0',
             }}>{p.title}</h3>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, lineHeight: 1.55, color: '#888', margin: '14px 0 0', flex: 1 }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, lineHeight: 1.55, color: 'hsl(180, 100%, 70%)', margin: '14px 0 0', flex: 1 }}>
               {p.desc}
             </p>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 24, paddingTop: 18, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#666' }}>{p.tags}</span>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'hsl(180, 100%, 70%)' }}>{p.tags}</span>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: '#EDEDED' }}>↗</span>
             </div>
           </a>
@@ -207,11 +207,11 @@ export default function Work() {
       <div style={{
         display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
         flexWrap: 'wrap', gap: 12,
-        fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.2em', color: '#666',
+        fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.2em', color: 'hsl(180, 100%, 70%)',
         marginTop: 'clamp(64px,10vh,110px)',
         paddingBottom: 18, borderBottom: '1px solid rgba(255,255,255,0.07)',
       }}>
-        <span style={{ color: '#888' }}>// THE_LAB</span>
+        <span style={{ color: 'hsl(180, 100%, 70%)' }}>// THE_LAB</span>
         <span style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
           <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)', animation: 'pulse 2s ease-in-out infinite', display: 'inline-block' }} />
           ACTIVELY_BUILDING
@@ -220,7 +220,7 @@ export default function Work() {
 
       <p style={{
         fontFamily: "'Inter', sans-serif",
-        fontSize: 'clamp(14px,1.5vw,16px)', lineHeight: 1.55, color: '#888',
+        fontSize: 'clamp(14px,1.5vw,16px)', lineHeight: 1.55, color: 'hsl(180, 100%, 70%)',
         maxWidth: 620, margin: 'clamp(20px,3vh,28px) 0 clamp(28px,4vh,40px)',
       }}>
         Open forks and studies I&rsquo;m building on — proving out AI and automation concepts in the open. Where theory becomes working code.
@@ -240,21 +240,21 @@ export default function Work() {
               borderBottom: '1px solid rgba(255,255,255,0.08)',
             }}
           >
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#555' }}>{row.num}</span>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: 'hsl(180, 100%, 70%)' }}>{row.num}</span>
             <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: 'clamp(15px,1.7vw,18px)', color: '#EDEDED', letterSpacing: '-0.01em' }}>
               {row.title}
             </span>
-            <span className="lab-desc" style={{ fontFamily: "'Inter', sans-serif", fontSize: 13.5, lineHeight: 1.45, color: '#888' }}>
+            <span className="lab-desc" style={{ fontFamily: "'Inter', sans-serif", fontSize: 13.5, lineHeight: 1.45, color: 'hsl(180, 100%, 70%)' }}>
               {row.desc}
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: 14, justifyContent: 'flex-end' }}>
               <span style={{
                 fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: '0.1em',
                 color: row.accent ? 'var(--accent)' : '#888',
-                border: row.accent ? '1px solid rgba(61,245,160,0.3)' : '1px solid rgba(255,255,255,0.16)',
+                border: row.accent ? '1px solid rgba(0,255,157,0.3)' : '1px solid rgba(255,255,255,0.16)',
                 padding: '5px 9px', whiteSpace: 'nowrap',
               }}>{row.badge}</span>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: '#666' }}>↗</span>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: 'hsl(180, 100%, 70%)' }}>↗</span>
             </span>
           </a>
         ))}

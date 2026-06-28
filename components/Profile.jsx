@@ -1,7 +1,7 @@
 export default function Profile() {
   return (
     <section id="profile" className="section-panel" style={{
-      background: 'rgba(5,5,5,0.82)',
+      background: 'rgba(5,5,5,0.1)',
       borderTop: '1px solid rgba(255,255,255,0.07)',
       padding: 'clamp(72px,12vh,140px) clamp(18px,4vw,56px)',
     }}>
@@ -27,14 +27,14 @@ export default function Profile() {
             margin: 0,
           }}>
             Cybersecurity architect{' '}
-            <span style={{ color: '#555' }}>(CASP+)</span>{' '}
+            <span style={{ color: 'hsl(180, 100%, 70%)' }}>(CASP+)</span>{' '}
             translating high-level security architecture into{' '}
             <span style={{ color: 'var(--accent)' }}>automated, executable workflows</span>
             {' '}— bridging engineering teams and the business stakeholders who depend on them.
           </p>
           <p style={{
             fontFamily: "'Inter', sans-serif", fontWeight: 400,
-            fontSize: 'clamp(14px,1.5vw,17px)', lineHeight: 1.6, color: '#888',
+            fontSize: 'clamp(14px,1.5vw,17px)', lineHeight: 1.6, color: 'hsl(180, 100%, 70%)',
             maxWidth: 620, margin: 'clamp(28px,4vh,40px) 0 0',
           }}>
             A foundation in high-stakes client communication from the Mayo Clinic and
@@ -52,7 +52,7 @@ export default function Profile() {
         }}>
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
-            letterSpacing: '0.2em', color: '#666', marginBottom: 22,
+            letterSpacing: '0.2em', color: 'hsl(180, 100%, 70%)', marginBottom: 22,
           }}>
             // CORE_PHILOSOPHY
           </div>
@@ -71,7 +71,7 @@ export default function Profile() {
               { label: 'BASE',   value: 'Fleming Island, FL' },
             ].map(({ label, value }) => (
               <div key={label} style={{ display: 'flex', justifyContent: 'space-between', padding: '12px 0', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-                <span style={{ color: '#666' }}>{label}</span>
+                <span style={{ color: 'hsl(180, 100%, 70%)' }}>{label}</span>
                 <span style={{ color: '#EDEDED' }}>{value}</span>
               </div>
             ))}

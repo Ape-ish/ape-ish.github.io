@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { --accent: #3DF5A0; }
+:root { --accent: #00ff9d; }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -17,7 +17,7 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
 }
-::selection { background: #3DF5A0; color: #050505; }
+::selection { background: #00ff9d; color: #050505; }
 a { color: inherit; text-decoration: none; }
 
 @keyframes blink { 0%, 48% { opacity: 1; } 49%, 100% { opacity: 0; } }
@@ -39,10 +39,10 @@ a { color: inherit; text-decoration: none; }
 .repo-btn:hover { color: var(--accent) !important; border-color: var(--accent) !important; background: #0A0A0A !important; }
 
 .project-card { transition: background .18s ease; }
-.project-card:hover { background: #080808 !important; }
+.project-card:hover { background: rgba(5,5,5,0.45) !important; }
 
 .lab-row { transition: background .16s ease; }
-.lab-row:hover { background: #0A0A0A !important; }
+.lab-row:hover { background: rgba(5,5,5,0.35) !important; }
 
 .contact-email { transition: color .18s ease; }
 .contact-email:hover { color: var(--accent) !important; }
@@ -70,6 +70,24 @@ a { color: inherit; text-decoration: none; }
 .section-panel {
   position: relative;
   z-index: 10;
+}
+.section-panel h1,
+.section-panel h2 {
+  text-shadow: 1px 1px 0 #050505, -1px -1px 0 #050505, 1px -1px 0 #050505, -1px 1px 0 #050505;
+}
+.label-chip {
+  text-shadow: none !important;
+  color: hsl(180, 100%, 70%);
+  background: rgba(0,0,0,0.6);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+.desc-block {
+  text-shadow: none !important;
+  color: hsl(180, 100%, 70%);
+  background: rgba(0,0,0,0.5);
+  border-radius: 3px;
+  padding: 6px 8px;
 }
 
 @media (max-width: 680px) {

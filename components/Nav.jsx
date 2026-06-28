@@ -20,7 +20,6 @@ export default function Nav() {
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       padding: '18px clamp(18px,4vw,56px)',
-      backdropFilter: 'blur(10px)',
       background: 'rgba(5,5,5,0.55)',
       borderBottom: '1px solid rgba(255,255,255,0.06)',
     }}>
@@ -37,10 +36,10 @@ export default function Nav() {
         fontFamily: "'JetBrains Mono', monospace",
         fontSize: 11, letterSpacing: '0.18em',
       }}>
-        <a href="#profile" className="nav-link" style={{ color: '#888' }}>01_PROFILE</a>
-        <a href="#work"    className="nav-link" style={{ color: '#888' }}>02_WORK</a>
-        <a href="#stack"   className="nav-link" style={{ color: '#888' }}>03_STACK</a>
-        <a href="#contact" className="nav-link" style={{ color: '#888' }}>04_CONTACT</a>
+        <a href="#profile" className="nav-link" style={{ color: 'hsl(180, 100%, 70%)' }}>01_PROFILE</a>
+        <a href="#work"    className="nav-link" style={{ color: 'hsl(180, 100%, 70%)' }}>02_WORK</a>
+        <a href="#stack"   className="nav-link" style={{ color: 'hsl(180, 100%, 70%)' }}>03_STACK</a>
+        <a href="#contact" className="nav-link" style={{ color: 'hsl(180, 100%, 70%)' }}>04_CONTACT</a>
         <span style={{ color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: 8 }}>
           <span style={{
             width: 6, height: 6, borderRadius: '50%',
@@ -48,7 +47,7 @@ export default function Nav() {
             animation: 'pulse 2s ease-in-out infinite',
             display: 'inline-block',
           }} />
-          <span style={{ color: '#666' }}>{clock}</span>
+          <span style={{ color: 'hsl(180, 100%, 70%)' }}>{clock}</span>
         </span>
       </nav>
     </header>
