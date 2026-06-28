@@ -30,6 +30,11 @@ export default function RootLayout({ children }) {
           src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
           strategy="beforeInteractive"
         />
+        {/* Mermaid — lazy-loaded; only needed when a Lab drawer opens */}
+        <Script
+          src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+          strategy="lazyOnload"
+        />
       </head>
       <body>{children}</body>
     </html>
