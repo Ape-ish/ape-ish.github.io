@@ -1,38 +1,91 @@
 'use client';
 import { useState } from 'react';
-import ProjectDrawer from './ProjectDrawer';
+import DojoDrawer from './DojoDrawer';
 import LabDrawer from './LabDrawer';
 
 const dojo = [
   {
+    index: '[ 001 ]', status: 'ACTIVE',
+    title: 'Humanizing the CIS Controls',
+    subtitle: 'Translation Engine | Tech-to-Risk Mapping',
+    desc: 'Translating technical security safeguards into mechanistic, executable frames for non-technical audiences — turning dense compliance language into operations people can actually run.',
+    tags: 'CIS Controls · Python · Risk Comms',
+    href: 'https://github.com/Ape-ish/humanizing-cis-controls',
+    stack: ['CIS Controls v8.1', 'Python 3', 'Risk Communication', 'Automation'],
+    description: 'A dual-mission architecture solving the communication gap in cybersecurity. Translating dense CIS safeguards into plain-language business continuity plans for the community, while building Python-driven automation workflows to validate these controls for the enterprise.',
+    diagram: `graph TD
+  classDef default fill:#050505,stroke:#333333,stroke-width:1px,color:#5ce6e6,font-family:monospace;
+  classDef accent fill:#050505,stroke:#00ff9d,stroke-width:1px,color:#ffffff,font-family:monospace;
+  A[Raw Input: CIS Critical Security Control]:::default --> B{The Dual-Mission Router}:::accent
+  B -->|Community / SMB| C[Plain-Language Translation]:::default
+  C --> D[Business Continuity Plan & Quick Wins]:::default
+  B -->|Enterprise / SRE| E[Python Automation Scripts]:::default
+  E --> F[Automated State Validation]:::default
+  D --> G((Actionable Security Posture)):::accent
+  F --> G`,
+  },
+  {
     index: '[ 002 ]', status: 'IN_DEVELOPMENT',
     title: 'PCAP Telemetry Analyzer',
+    subtitle: 'SRE Automation | Threat Intel Extraction',
     desc: 'Python utility that ingests scrubbed PCAP datasets, parses the telemetry, and generates executive-level summaries of anomalies and top communicators — cutting Mean Time to Detect by automating packet triage.',
     tags: 'Python · SOC · SRE',
     href: 'https://github.com/Ape-ish/automated-pcap-analyzer',
     stack: ['Python 3', 'Scapy', 'Pandas', 'SOC Tooling'],
-    problem: 'PCAP analysis is manual, slow, and demands specialist knowledge. Analysts buried in raw packet data have no fast path to readable summaries — every minute of triage is a minute the threat goes uncontained.',
-    mechanics: 'Ingests scrubbed PCAP files via Scapy and constructs a Pandas DataFrame of flows, top talkers, and protocol anomalies. A templated report engine formats findings into plain-language executive summaries — compressing hours of manual triage into a single CLI run.',
+    description: 'An automated pipeline designed to ingest scrubbed PCAP datasets, parse raw network telemetry, and generate executive-level intelligence. Eliminating the friction of manual triage to reduce Mean Time to Detect (MTTD).',
+    diagram: `graph TD
+  classDef default fill:#050505,stroke:#333333,stroke-width:1px,color:#5ce6e6,font-family:monospace;
+  classDef accent fill:#050505,stroke:#00ff9d,stroke-width:1px,color:#ffffff,font-family:monospace;
+  A[Raw PCAP Dataset Ingestion]:::default --> B[Python CLI Parser]:::default
+  B --> C{Data Extraction Engine}:::accent
+  C --> D[Isolate Top 5 Talkers / IPs]:::default
+  C --> E[Map Port Frequencies]:::default
+  D --> F{Threat Intel Logic Gate}:::accent
+  E --> F
+  F -->|Anomaly Detected| G[Flag Suspicious Artifacts]:::default
+  F -->|Clean Baseline| H[Bypass]:::default
+  G --> I((JSON Executive Summary)):::accent
+  H --> I`,
   },
   {
     index: '[ 003 ]', status: 'LOCAL_AI',
-    title: 'Automated Job Pipeline',
-    desc: 'A three-stage, LLM-driven pipeline that scrapes, triages, and executes applications across commercial ATS and federal portals — local inference for extraction and triage, cloud inference for artifact generation.',
+    title: 'Automated Job Application Pipeline',
+    subtitle: 'LLM Automation | ATS Triage Engine',
+    desc: 'A three-stage, LLM-driven automation pipeline that scrapes, triages, and executes applications — local inference for secure extraction, cloud inference for tailored artifact generation.',
     tags: 'Local LLM · Agentic',
     href: 'https://github.com/Ape-ish/automated-job-pipeline',
     stack: ['Python', 'Playwright', 'Ollama', 'Claude API', 'LangChain'],
-    problem: 'Job searching across ATS platforms and federal portals is repetitive, inconsistent, and schema-unpredictable. Each portal demands custom form logic, and tailoring application artifacts at scale is prohibitively time-consuming.',
-    mechanics: 'Three-stage pipeline: (1) Playwright scraper harvests postings and normalises metadata into a unified schema. (2) A local LLM (Ollama) scores and triages role-fit, discarding noise before any cloud call is made. (3) Claude API generates targeted cover letters and application artifacts, then the pipeline executes the submission — end-to-end.',
+    description: 'A three-stage, LLM-driven automation pipeline designed to scrape, triage, and execute job applications. Utilizing local inference for secure, low-cost data extraction and filtering, followed by cloud-based inference for tailored artifact generation.',
+    diagram: `graph TD
+  classDef default fill:#050505,stroke:#333333,stroke-width:1px,color:#5ce6e6,font-family:monospace;
+  classDef accent fill:#050505,stroke:#00ff9d,stroke-width:1px,color:#ffffff,font-family:monospace;
+  A[Target: Commercial ATS & Federal Portals]:::default --> B[Stage 1: Ingestion & Scraping]:::default
+  B --> C{Stage 2: Local LLM Triage}:::accent
+  C -->|Low Match / Noise| D[Discard Payload]:::default
+  C -->|High Match Threshold| E[Stage 3: Cloud LLM Inference]:::default
+  E --> F[Artifact Gen: Tailored Resume & Cover Letter]:::default
+  F --> G((Automated Application Execution)):::accent`,
   },
   {
     index: '[ 004 ]', status: 'R&D',
-    title: 'Custom GPT Agents',
-    desc: 'A benchmark-design framework for custom GPT agents — adversarial "what-if" test suites that stress reasoning quality, tone, and multi-turn coherence to ship reliable, user-ready conversational systems.',
-    tags: 'Agentic · Eval',
+    title: 'Custom GPT Benchmarking',
+    subtitle: 'AI Red Teaming | Performance Matrix',
+    desc: 'A rigorous benchmarking framework for custom GPTs — adversarial test suites that stress reasoning quality, tone, and multi-turn coherence to ship reliable, user-ready conversational systems.',
+    tags: 'AI Red Teaming · Eval',
     href: 'https://github.com/Ape-ish/potential-broccoli',
     stack: ['OpenAI API', 'Python', 'Prompt Engineering', 'Eval Frameworks'],
-    problem: 'Shipping custom GPT agents without structured benchmarks produces inconsistent tone, reasoning failures under adversarial input, and no measurable quality bar — teams ship on vibes and discover failures in production.',
-    mechanics: 'Defines adversarial test suites — "what-if" prompts engineered to break reasoning chains, expose tone drift, and stress multi-turn coherence. Each run outputs a benchmark score against pre-defined rubrics, giving teams a quantifiable quality gate before any agent reaches users.',
+    description: 'A rigorous benchmarking framework for custom GPTs. Testing inference against adversarial inputs, contextual variability, and evaluating both single-turn rubric accuracy and multi-turn conversational coherence.',
+    diagram: `graph TD
+  classDef default fill:#050505,stroke:#333333,stroke-width:1px,color:#5ce6e6,font-family:monospace;
+  classDef accent fill:#050505,stroke:#00ff9d,stroke-width:1px,color:#ffffff,font-family:monospace;
+  A[Input: Variable & Adversarial Test Cases]:::default --> B{Agent: potential-broccoli}:::accent
+  B --> C[Evaluation Matrix Engine]:::default
+  C --> D[Single-Turn Assessment]:::default
+  C --> E[Multi-Turn State Assessment]:::default
+  D --> F[Rubric: Reasoning, Tone, Safety]:::default
+  E --> G[State: Coherence, Continuity, Recovery]:::default
+  F --> H((Validated Deployment Benchmark)):::accent
+  G --> H`,
   },
 ];
 
@@ -112,7 +165,7 @@ const lab = [
 ];
 
 export default function Work() {
-  const [activeProject, setActiveProject] = useState(null);
+  const [activeDojo, setActiveDojo] = useState(null);
   const [activeLab, setActiveLab] = useState(null);
 
   return (
@@ -160,21 +213,33 @@ export default function Work() {
               non-technical audiences — turning dense compliance language into operations people
               can actually run.
             </p>
-            <a
-              href="https://github.com/Ape-ish/humanizing-cis-controls"
-              target="_blank" rel="noopener"
-              className="repo-btn"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: 12,
-                marginTop: 'clamp(30px,4vh,44px)',
-                fontFamily: "'JetBrains Mono', monospace", fontSize: 13, letterSpacing: '0.04em',
-                color: '#EDEDED', border: '1px solid rgba(255,255,255,0.16)',
-                padding: '14px 22px', background: '#070707',
-              }}
-            >
-              <span style={{ color: 'var(--accent)' }}>&gt;</span> view_repository
-              <span style={{ color: 'hsl(180, 100%, 70%)' }}>_</span>
-            </a>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 'clamp(30px,4vh,44px)' }}>
+              <a
+                href="https://github.com/Ape-ish/humanizing-cis-controls"
+                target="_blank" rel="noopener"
+                className="repo-btn"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 12,
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 13, letterSpacing: '0.04em',
+                  color: '#EDEDED', border: '1px solid rgba(255,255,255,0.16)',
+                  padding: '14px 22px', background: '#070707',
+                }}
+              >
+                <span style={{ color: 'var(--accent)' }}>&gt;</span> view_repository
+                <span style={{ color: 'hsl(180, 100%, 70%)' }}>_</span>
+              </a>
+              <button
+                onClick={() => setActiveDojo(dojo[0])}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 12,
+                  fontFamily: "'JetBrains Mono', monospace", fontSize: 13, letterSpacing: '0.04em',
+                  color: 'var(--accent)', border: '1px solid rgba(0,255,157,0.35)',
+                  padding: '14px 22px', background: 'transparent', cursor: 'pointer',
+                }}
+              >
+                open_details →
+              </button>
+            </div>
           </div>
 
           {/* metadata sidebar */}
@@ -231,7 +296,7 @@ export default function Work() {
           paddingBottom: 'clamp(28px,4vh,40px)', borderBottom: '1px solid rgba(255,255,255,0.07)',
         }}>
           <span>// THE_TECHNICAL_DOJO</span>
-          <span>INDEX 002 — 004</span>
+          <span>INDEX 001 — 004</span>
         </div>
 
         <div style={{
@@ -244,8 +309,8 @@ export default function Work() {
               key={p.index}
               role="button"
               tabIndex={0}
-              onClick={() => setActiveProject(p)}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveProject(p); }}
+              onClick={() => setActiveDojo(p)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveDojo(p); }}
               className="project-card"
               style={{
                 background: 'rgba(5,5,5,0.1)', padding: 'clamp(26px,2.6vw,38px)',
@@ -335,7 +400,7 @@ export default function Work() {
         </div>
       </section>
 
-      <ProjectDrawer project={activeProject} onClose={() => setActiveProject(null)} />
+      <DojoDrawer project={activeDojo} onClose={() => setActiveDojo(null)} />
       <LabDrawer     lab={activeLab}         onClose={() => setActiveLab(null)} />
     </>
   );
