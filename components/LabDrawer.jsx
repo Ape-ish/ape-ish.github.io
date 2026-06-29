@@ -221,11 +221,10 @@ export default function LabDrawer({ lab, onClose }) {
                   // ARCHITECTURE_DIAGRAM
                 </div>
 
-                {/* mermaid-wrapper scrolls horizontally on mobile; CSS forces min-width 600px on the SVG */}
-                <div
-                  className="mermaid-wrapper"
-                  style={{ background: '#050505', border: '1px solid rgba(255,255,255,0.08)' }}
-                >
+                <div style={{
+                  overflowX: 'auto', paddingBottom: '1rem',
+                  background: '#050505', border: '1px solid rgba(255,255,255,0.08)',
+                }}>
                   <div
                     ref={diagramRef}
                     style={{

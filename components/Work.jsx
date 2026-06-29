@@ -63,7 +63,7 @@ const lab = [
     stack: ['Python', 'Pandas', 'yFinance', 'OpenAI API'],
     summary: 'A live, real-money experiment testing whether an LLM can outperform passive investing on micro-cap equities. Daily candle data feeds a signal-generation pipeline; the model reasons over macro sentiment, technicals, and position sizing before any trade executes.',
     repoUrl: 'https://github.com/Ape-ish/ChatGPT-Micro-Cap-Experiment',
-    diagram: `flowchart LR
+    diagram: `flowchart TD
     A[yFinance Feed] --> B[Data Normaliser]
     B --> C[LLM Signal Engine]
     C --> D{Decision Gate}
@@ -101,7 +101,7 @@ const lab = [
     stack: ['Python 3', 'OOP', 'Data Structures', 'Standard Library'],
     summary: 'Structured progression from language fundamentals to applied systems — covering data structures, OOP patterns, functional paradigms, and the standard library modules underpinning every automation in this index. No shortcuts; every concept earned through deliberate repetition.',
     repoUrl: 'https://github.com/Ape-ish/Complete-Python-3-Bootcamp',
-    diagram: `flowchart LR
+    diagram: `flowchart TD
     A[Syntax and Types] --> B[Data Structures]
     B --> C[OOP Patterns]
     C --> D[Standard Library]
