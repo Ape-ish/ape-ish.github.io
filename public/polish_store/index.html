@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delikatesy pod Lipą — Pre-Order</title>
+<style>
+  :root{
+    --bg-deep:#16241C;
+    --bg-panel:#1E3226;
+    --cream:#F7F2E7;
+    --cream-text:#E7E4DA;
+    --sage:#8FA895;
+    --sage-dim:#7f9285;
+    --terracotta:#B5432A;
+    --gold:#C9A24B;
+    --ink:#2b2b26;
+  }
+  *{box-sizing:border-box;}
+  html{background:var(--bg-deep);}
+  body{
+    margin:0;
+    font-family:'Work Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  .display{font-family:'Petrona',Georgia,serif;}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;}
+
+  .page{
+    min-height:100vh;
+    background:var(--bg-deep);
+    display:flex;
+    justify-content:center;
+  }
+  .shell{
+    width:100%;
+    max-width:520px;
+    position:relative;
+    overflow:hidden;
+    background:var(--bg-deep);
+    box-shadow:0 0 60px rgba(0,0,0,.4);
+  }
+
+  /* Header */
+  .header{
+    position:relative;
+    padding:34px 24px 74px;
+    background:linear-gradient(160deg,#1E3226,#16241C);
+  }
+  .header h1{
+    margin:0;
+    font-size:30px;
+    font-weight:600;
+    color:var(--cream-text);
+  }
+  .header p{
+    margin:6px 0 0;
+    font-size:13.5px;
+    color:var(--sage);
+  }
+
+  /* Weekly special */
+  .special{
+    margin:-46px 20px 0;
+    background:var(--cream);
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 12px 30px rgba(0,0,0,.28);
+    position:relative;
+  }
+  .special .eyebrow{
+    font-size:11px;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    font-weight:700;
+  }
+  .special .special-photo{
+    width:100%;
+    height:150px;
+    border-radius:12px;
+    object-fit:cover;
+    margin-top:14px;
+    background:repeating-linear-gradient(135deg,#E8D9A8,#E8D9A8 8px,#f3ead0 8px,#f3ead0 16px);
+    display:block;
+  }
+  .special h2{
+    font-size:23px;
+    font-style:italic;
+    font-weight:500;
+    color:var(--ink);
+    margin:14px 0 0;
+  }
+  .special .subname{
+    font-size:12.5px;
+    color:#5c5648;
+    margin:2px 0 4px;
+  }
+  .special .story{
+    font-size:13.5px;
+    color:#5c5648;
+    line-height:1.6;
+    margin:8px 0 14px;
+  }
+  .special .price-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .special .price{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .special .price .now{
+    font-size:23px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .special .price .was{
+    font-size:14px;
+    text-decoration:line-through;
+    color:#a89a80;
+  }
+  .special .tag{
+    font-size:11px;
+    color:#4f7358;
+    background:#EAF0EA;
+    padding:5px 10px;
+    border-radius:6px;
+    font-weight:600;
+  }
+
+  /* Section labels */
+  .section{padding:32px 20px 6px;}
+  .section-label{
+    font-size:11px;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+    color:var(--sage);
+    font-weight:700;
+    margin-bottom:4px;
+  }
+  .section-sub{
+    font-size:12.5px;
+    color:var(--sage-dim);
+    margin-bottom:14px;
+  }
+
+  /* In stock strip */
+  .stock-strip{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    padding-bottom:8px;
+    margin-top:12px;
+  }
+  .stock-card{
+    flex:none;
+    width:112px;
+    text-align:center;
+  }
+  .stock-card .photo{
+    width:100%;
+    height:64px;
+    border-radius:12px;
+    object-fit:cover;
+    display:block;
+    background:repeating-linear-gradient(135deg,#E6D2B8,#E6D2B8 8px,#f0e2cf 8px,#f0e2cf 16px);
+  }
+  .stock-card .name{
+    font-size:12.5px;
+    color:var(--cream-text);
+    margin-top:8px;
+  }
+  .stock-card .price{
+    font-size:11.5px;
+    color:var(--sage);
+    margin-top:2px;
+  }
+
+  /* Pre-order grid */
+  .preorder-section{padding:30px 20px 32px;}
+  .preorder-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:14px;
+  }
+  .preorder-card{
+    background:var(--bg-panel);
+    border-radius:14px;
+    padding:13px;
+    border:1px solid rgba(143,168,149,.25);
+  }
+  .preorder-card .photo{
+    width:100%;
+    height:60px;
+    border-radius:9px;
+    margin-bottom:9px;
+    background:repeating-linear-gradient(135deg,#EADFC8,#EADFC8 8px,#C9A24B22 8px,#C9A24B22 16px);
+  }
+  .preorder-card .name{
+    font-size:13px;
+    font-weight:600;
+    color:var(--cream-text);
+    line-height:1.35;
+  }
+  .preorder-card .desc{
+    font-size:11px;
+    color:var(--sage-dim);
+    line-height:1.4;
+    margin:5px 0 8px;
+  }
+  .preorder-card .countdown{
+    font-size:11.5px;
+    font-weight:600;
+    color:var(--gold);
+    margin-bottom:2px;
+  }
+  .preorder-card .meta{
+    font-size:11px;
+    color:var(--sage-dim);
+    margin-bottom:9px;
+  }
+  .reserve-btn{
+    border:none;
+    border-radius:8px;
+    padding:9px 8px;
+    font-size:12px;
+    font-weight:600;
+    cursor:pointer;
+    width:100%;
+    line-height:1.3;
+    background:var(--gold);
+    color:var(--bg-deep);
+    transition:background .15s ease, color .15s ease;
+  }
+  .reserve-btn.reserved{
+    background:var(--sage);
+    color:var(--bg-deep);
+  }
+
+  /* Footer manifest */
+  .footer{padding:0 20px 34px;}
+  .footer .inner{
+    border-top:1px solid rgba(143,168,149,.2);
+    padding-top:16px;
+    font-size:11.5px;
+    color:var(--sage-dim);
+    line-height:1.6;
+  }
+
+  /* Fly-in promo */
+  .promo-flyin{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    width:240px;
+    background:var(--cream);
+    border-radius:16px;
+    padding:16px;
+    box-shadow:0 14px 30px rgba(0,0,0,.4);
+    color:var(--ink);
+    display:none;
+  }
+  .promo-flyin.visible{
+    display:block;
+    animation:flyIn .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .promo-flyin .top-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+  }
+  .promo-flyin .eyebrow{
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--terracotta);
+    font-weight:700;
+  }
+  .promo-flyin .close-btn{
+    background:none;
+    border:none;
+    color:#8a8270;
+    font-size:15px;
+    cursor:pointer;
+    line-height:1;
+  }
+  .promo-flyin .headline{
+    font-family:'Petrona',Georgia,serif;
+    font-size:16px;
+    margin-top:5px;
+  }
+  .promo-flyin .note{
+    font-size:11.5px;
+    color:#7a7362;
+    margin-top:5px;
+  }
+  .promo-icon{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:var(--gold);
+    border:none;
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+    cursor:pointer;
+    color:var(--bg-deep);
+    font-size:20px;
+    font-weight:700;
+    display:none;
+  }
+  .promo-icon.visible{
+    display:block;
+    animation:iconPop .3s ease;
+  }
+
+  @keyframes flyIn{from{transform:translate(120%,0);opacity:0}to{transform:translate(0,0);opacity:1}}
+  @keyframes iconPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="shell">
+
+    <!-- Header -->
+    <header class="header">
+      <h1 class="display">Delikatesy pod Lipą</h1>
+      <p>Sąsiedzki sklep, świeże dostawy co tydzień</p>
+    </header>
+
+    <!-- Weekly Special -->
+    <section class="special">
+      <div class="eyebrow">Specjał tygodnia</div>
+      <img class="special-photo" src="honey.jpg" alt="Belveder Miód Wrzosowy">
+      <h2 class="display">Belveder Miód Wrzosowy</h2>
+      <div class="subname">Heather Honey Mead</div>
+      <p class="story">Miód pitny zbierany z wrzosowisk Suwalszczyzny, dojrzewający powoli w dębowych beczkach. To ostatnia partia tego sezonu — dopóki starczy zapasów w naszej piwniczce.</p>
+      <div class="price-row">
+        <div class="price">
+          <span class="now">39,00 zł</span>
+          <span class="was">55,00 zł</span>
+        </div>
+        <span class="tag">nadwyżka sezonu</span>
+      </div>
+    </section>
+
+    <!-- In Stock Now -->
+    <section class="section">
+      <div class="section-label">Dostępne teraz</div>
+      <div class="stock-strip" id="stockStrip"></div>
+    </section>
+
+    <!-- Upcoming Pre-Orders -->
+    <section class="preorder-section">
+      <div class="section-label">Zarezerwuj dostawę</div>
+      <div class="section-sub">Wpłać zaliczkę teraz, odbierz w dniu dostawy</div>
+      <div class="preorder-grid" id="preorderGrid"></div>
+    </section>
+
+    <!-- Manifest footer -->
+    <footer class="footer">
+      <div class="inner">
+        Zarezerwowane pozycje: <span id="reservedCount">0</span> · Odbiór w sklepie, ul. Lipowa 4 · Pon–Sob 8:00–19:00
+      </div>
+    </footer>
+
+    <!-- Transient promotional fly-in -->
+    <div class="promo-flyin" id="promoFlyin">
+      <div class="top-row">
+        <div class="eyebrow">Właśnie dotarło</div>
+        <button class="close-btn" id="promoClose" aria-label="Zamknij">✕</button>
+      </div>
+      <div class="headline display">Belveder Miód Wrzosowy — dziś -20%</div>
+      <div class="note">Tylko do wyczerpania zapasów sezonu</div>
+    </div>
+    <button class="promo-icon" id="promoIcon" aria-label="Pokaż promocję">%</button>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Data ---------- */
+
+  // First two entries are the featured inventory items with real photos.
+  var IN_STOCK = [
+    { id:'kabanosy', name:'Kabanosy tradycyjne',  price:'18,50 zł', img:'sausage.jpg' },
+    { id:'pierogi',  name:'Pierogi ruskie',        price:'21,00 zł', img:'pierogi.jpg' },
+    { id:'oscypek',  name:'Oscypek wędzony',        price:'24,90 zł', img:null },
+    { id:'ogorki',   name:'Ogórki kiszone',         price:'9,90 zł',  img:null },
+    { id:'chleb',    name:'Chleb na zakwasie',      price:'12,00 zł', img:null },
+    { id:'zurek',    name:'Żurek na zakwasie',      price:'8,50 zł',  img:null }
+  ];
+
+  var PREORDERS = [
+    { id:'salmon',   name:'Łosoś wędzony z Bałtyku', desc:'Filet wędzony na zimno, świeży odłów',        price:'42,00 zł', date:'2026-07-09T00:00:00' },
+    { id:'kielbasa', name:'Wiejska kiełbasa',          desc:'Cała kiełbasa wędzona, domowa receptura',     price:'34,90 zł', date:'2026-07-11T00:00:00' },
+    { id:'makowiec', name:'Makowiec domowy',           desc:'Sezonowa partia, limitowana ilość',           price:'28,00 zł', date:'2026-07-15T00:00:00' },
+    { id:'miod',     name:'Miód pitny — zestaw 3 smaków', desc:'Trio miodów z lokalnej pasieki',           price:'65,00 zł', date:'2026-07-18T00:00:00' }
+  ];
+
+  /* ---------- State: pre-order manifest ---------- */
+
+  var reserved = {}; // { [itemId]: true }
+
+  /* ---------- Rendering ---------- */
+
+  function formatDateLabel(dateStr){
+    var d = new Date(dateStr);
+    return d.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' });
+  }
+
+  function countdownStr(dateStr){
+    var diff = new Date(dateStr).getTime() - Date.now();
+    if (diff <= 0) return 'Arriving today';
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    if (days > 0) return days + 'd ' + hours + 'h';
+    var mins = Math.floor((diff % 3600000) / 60000);
+    return hours + 'h ' + mins + 'm';
+  }
+
+  function renderInStock(){
+    var strip = document.getElementById('stockStrip');
+    strip.innerHTML = IN_STOCK.map(function(item){
+      var photo = item.img
+        ? '<img class="photo" src="' + item.img + '" alt="' + item.name + '">'
+        : '<div class="photo"></div>';
+      return (
+        '<div class="stock-card">' +
+          photo +
+          '<div class="name">' + item.name + '</div>' +
+          '<div class="price">' + item.price + '</div>' +
+        '</div>'
+      );
+    }).join('');
+  }
+
+  function renderPreorders(){
+    var grid = document.getElementById('preorderGrid');
+    grid.innerHTML = PREORDERS.map(function(item){
+      var isReserved = !!reserved[item.id];
+      var dateLabel = formatDateLabel(item.date);
+      var btnLabel = isReserved ? ('Reserved — ' + dateLabel) : ('Reserve for ' + dateLabel + ' Delivery');
+      return (
+        '<div class="preorder-card">' +
+          '<div class="photo"></div>' +
+          '<div class="name">' + item.name + '</div>' +
+          '<div class="desc">' + item.desc + '</div>' +
+          '<div class="countdown mono">' + countdownStr(item.date) + '</div>' +
+          '<div class="meta">' + dateLabel + ' · ' + item.price + '</div>' +
+          '<button class="reserve-btn' + (isReserved ? ' reserved' : '') + '" data-id="' + item.id + '">' + btnLabel + '</button>' +
+        '</div>'
+      );
+    }).join('');
+
+    // Wire up reserve buttons
+    var buttons = grid.querySelectorAll('.reserve-btn');
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var id = btn.getAttribute('data-id');
+        toggleReserve(id);
+      });
+    });
+  }
+
+  function renderManifestCount(){
+    var count = Object.keys(reserved).filter(function(id){ return reserved[id]; }).length;
+    document.getElementById('reservedCount').textContent = count;
+  }
+
+  function toggleReserve(id){
+    reserved[id] = !reserved[id];
+    renderPreorders();
+    renderManifestCount();
+  }
+
+  /* ---------- Live countdown tick ---------- */
+
+  setInterval(function(){
+    renderPreorders();
+  }, 30000);
+
+  /* ---------- Transient promotional fly-in ---------- */
+
+  var promoFlyin = document.getElementById('promoFlyin');
+  var promoIcon = document.getElementById('promoIcon');
+  var promoCloseBtn = document.getElementById('promoClose');
+  var autoMinimizeTimer = null;
+
+  function showPromo(){
+    promoIcon.classList.remove('visible');
+    promoFlyin.classList.add('visible');
+    clearTimeout(autoMinimizeTimer);
+    autoMinimizeTimer = setTimeout(minimizePromo, 2000);
+  }
+
+  function minimizePromo(){
+    promoFlyin.classList.remove('visible');
+    promoIcon.classList.add('visible');
+  }
+
+  promoCloseBtn.addEventListener('click', minimizePromo);
+  promoIcon.addEventListener('click', showPromo);
+
+  /* ---------- Init ---------- */
+
+  document.addEventListener('DOMContentLoaded', function(){
+    renderInStock();
+    renderPreorders();
+    renderManifestCount();
+    // Fly in shortly after load, hold 2s, then auto-minimize to icon.
+    setTimeout(showPromo, 900);
+  });
+
+})();
+</script>
+
+</body>
+</html>
